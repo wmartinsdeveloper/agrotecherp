@@ -2,6 +2,8 @@ package com.agrotech.erp.entities;
 
 import java.util.Date;
 
+import com.agrotech.erp.entities.enums.unidadePeso;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
