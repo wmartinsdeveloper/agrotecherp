@@ -20,6 +20,7 @@ public class categoriaProduto {
     private String nome;
     private String descricao;
 
-    //Tipo (Ferramenta,Inseticida,Adubo Organico, Adubo Mineral,Bactericida,Fungicida,Ferramenta) Alteração
+    //Tipo (Ferramenta,Inseticida,Adubo Organico, Adubo Mineral,Bactericida,Fungicida,Ferramenta) Alteração novas ajustes
+    
 
 }
