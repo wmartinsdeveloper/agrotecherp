@@ -1,12 +1,10 @@
 package com.agrotech.erp.entities;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "categoriaProduto")
@@ -22,6 +20,6 @@ public class categoriaProduto {
     private String nome;
     private String descricao;
 
-    //Tipo (Ferramenta,Inseticida,Adubo Organico, Adubo Mineral,Bactericida,Fungicida,Ferramenta)
+    //Tipo (Ferramenta,Inseticida,Adubo Organico, Adubo Mineral,Bactericida,Fungicida,Ferramenta) Alteração
 
 }
