@@ -5,6 +5,8 @@ import com.agrotech.erp.entities.Enums.UnidadeTempo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,18 +28,21 @@ public class Cultura {
     @Column(name = "CicloVida")
     private int CicloVida;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "UnidadeCicloVida")
     private UnidadeTempo UnidadeCicloVida;
 
     @Column(name = "InicioProducao")
     private int InicioProducao;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "UnidadeInicioProducao")
     private UnidadeTempo UnidadeInicioProducao;
     
     @Column(name = "CicloProducao")
     private int CicloProducao; 
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "UnidadeCicloProducao")
     private UnidadeTempo UnidadeCicloProducao;    
 
@@ -50,31 +55,32 @@ public class Cultura {
     @Column(name = "IntervaloEntreSafra")    
     private int IntervaloEntreSafra;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "UnidadeEntreSafra")
     private UnidadeTempo UnidadeEntreSafra;    
 
     @Column(name = "IntervaloColheita")    
     private int IntervaloColheita;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "UnidadeIntervaloColheita")
     private UnidadeTempo UnidadeIntervaloColheita;   
 
     @Column(name = "EmbalagemVenda")    
     private String EmbalagemVenda;    
 
-
     @Column(name = "PesoVenda")    
     private int PesoVenda;   
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "UnidadePeso")    
     private UnidadePeso UnidadePeso;
-
     public Cultura(){}
 
     public Cultura(String Nome, int cicloVida,
             UnidadeTempo unidadeCicloVida, int inicioProducao, UnidadeTempo unidadeInicioProducao, int cicloProducao,
             UnidadeTempo unidadeCicloProducao, boolean safraUnica, int quantidadeSafra,
-   int intervaloEntreSafra, UnidadeTempo unidadeEntreSafra,
+            int intervaloEntreSafra, UnidadeTempo unidadeEntreSafra,
             int intervaloColheita, UnidadeTempo unidadeIntervaloColheita, String embalagemVenda, int pesoVenda,
             com.agrotech.erp.entities.Enums.UnidadePeso unidadePeso) {
         nome = Nome;
