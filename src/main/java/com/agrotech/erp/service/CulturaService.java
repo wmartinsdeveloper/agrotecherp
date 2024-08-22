@@ -28,28 +28,44 @@ public class CulturaService {
     }
 
     public void save(dtoCultura dtoCultura) throws Exception {
-        Optional<Cultura> culturaOptional = culturaRepository.findByNome(dtoCultura.nome());
+        Optional<Cultura> culturaOptional = culturaRepository.findByNome(dtoCultura.Nome());
         
         try{
             if(culturaOptional.isPresent()) {
                 Cultura cultura = culturaOptional.get();
-                cultura.setNome(dtoCultura.nome()); 
-                cultura.setCicloVida(dtoCultura.cicloVida());
-                cultura.setUnidadeCicloVida(dtoCultura.unidadeCicloVida());
-                cultura.setInicioProducao(dtoCultura.inicioProducao());
-                cultura.setUnidadeInicioProducao(dtoCultura.unidadeInicioProducao());
-                cultura.setSafraUnica(dtoCultura.safraUnica());
-                cultura.setIntervaloEntreSafra(dtoCultura.intervaloEntreSafra());
-                cultura.setUnidadeEntreSafra(dtoCultura.unidadeEntreSafra());
-                cultura.setIntervaloColheita(dtoCultura.intervaloColheita());
-                cultura.setUnidadeIntervaloColheita(dtoCultura.unidadeIntervaloColheita());
-                cultura.setEmbalagemVenda(dtoCultura.embalagemVenda());
-                cultura.setPesoVenda(dtoCultura.pesoVenda());
-                cultura.setUnidadePeso(dtoCultura.unidadePeso());
+                cultura.setNome(dtoCultura.Nome()); 
+                cultura.setCicloVida(dtoCultura.CicloVida());
+                cultura.setUnidadeCicloVida(dtoCultura.UnidadeCicloVida());
+                cultura.setInicioProducao(dtoCultura.InicioProducao());
+                cultura.setUnidadeInicioProducao(dtoCultura.UnidadeInicioProducao());
+                cultura.setCicloProducao(dtoCultura.CicloProducao());
+                cultura.setUnidadeCicloProducao(dtoCultura.UnidadeCicloProducao());
+                cultura.setSafraUnica(dtoCultura.SafraUnica());
+                cultura.setIntervaloEntreSafra(dtoCultura.IntervaloEntreSafra());
+                cultura.setUnidadeEntreSafra(dtoCultura.UnidadeEntreSafra());
+                cultura.setIntervaloColheita(dtoCultura.IntervaloColheita());
+                cultura.setUnidadeIntervaloColheita(dtoCultura.UnidadeIntervaloColheita());
+                cultura.setEmbalagemVenda(dtoCultura.EmbalagemVenda());
+                cultura.setPesoVenda(dtoCultura.PesoVenda());
+                cultura.setUnidadePeso(dtoCultura.UnidadePeso());
                 culturaRepository.save(cultura);
 
             } else {
-                Cultura newCultura = new Cultura(dtoCultura.nome(), dtoCultura.cicloVida(), dtoCultura.unidadeCicloVida(), dtoCultura.inicioProducao(), dtoCultura.unidadeInicioProducao(), dtoCultura.safraUnica(), dtoCultura.intervaloEntreSafra(), dtoCultura.unidadeEntreSafra(), dtoCultura.intervaloColheita(), dtoCultura.unidadeIntervaloColheita(), dtoCultura.embalagemVenda(), dtoCultura.pesoVenda(), dtoCultura.unidadePeso());
+                Cultura newCultura = new Cultura(dtoCultura.Nome(),
+                                                 dtoCultura.CicloVida(),
+                                                 dtoCultura.UnidadeCicloVida(), 
+                                                 dtoCultura.InicioProducao(), 
+                                                 dtoCultura.UnidadeInicioProducao(),
+                                                 dtoCultura.CicloProducao(),
+                                                 dtoCultura.UnidadeCicloProducao(), 
+                                                 dtoCultura.SafraUnica(), 
+                                                 dtoCultura.IntervaloEntreSafra(), 
+                                                 dtoCultura.UnidadeEntreSafra(), 
+                                                 dtoCultura.IntervaloColheita(), 
+                                                 dtoCultura.UnidadeIntervaloColheita(), 
+                                                 dtoCultura.EmbalagemVenda(), 
+                                                 dtoCultura.PesoVenda(), 
+                                                 dtoCultura.UnidadePeso());
                 culturaRepository.save(newCultura);
             }
         }catch(Exception e) 

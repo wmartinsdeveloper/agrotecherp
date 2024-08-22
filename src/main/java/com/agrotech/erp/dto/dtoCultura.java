@@ -1,8 +1,23 @@
 package com.agrotech.erp.dto;
 
-import com.agrotech.erp.entities.enums.unidadePeso;
-import com.agrotech.erp.entities.enums.unidadeTempo;
+import com.agrotech.erp.entities.Enums.UnidadePeso;
+import com.agrotech.erp.entities.Enums.UnidadeTempo;
 
-public record dtoCultura(String nome,int cicloVida,unidadeTempo unidadeCicloVida,int inicioProducao,unidadeTempo unidadeInicioProducao,Boolean safraUnica,int intervaloEntreSafra,unidadeTempo unidadeEntreSafra,
-int intervaloColheita,unidadeTempo unidadeIntervaloColheita,String embalagemVenda,int pesoVenda,unidadePeso unidadePeso)
+public record dtoCultura(
+String Nome,
+int CicloVida,
+UnidadeTempo UnidadeCicloVida,
+int InicioProducao,
+UnidadeTempo UnidadeInicioProducao,
+int CicloProducao, 
+UnidadeTempo UnidadeCicloProducao,    
+boolean SafraUnica,
+int IntervaloEntreSafra,
+UnidadeTempo UnidadeEntreSafra,    
+int IntervaloColheita,
+UnidadeTempo UnidadeIntervaloColheita,   
+String EmbalagemVenda,    
+int PesoVenda,   
+UnidadePeso UnidadePeso)
 {}
+

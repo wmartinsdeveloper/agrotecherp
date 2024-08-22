@@ -7,8 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
 import com.agrotech.erp.entities.Cultura;
-import com.agrotech.erp.entities.enums.unidadePeso;
-import com.agrotech.erp.entities.enums.unidadeTempo;
+import com.agrotech.erp.entities.Enums.UnidadePeso;
+import com.agrotech.erp.entities.Enums.UnidadeTempo;
 import com.agrotech.erp.repositories.CulturaRepository;
 
 
@@ -24,7 +24,7 @@ public class DataInicializer  implements CommandLineRunner {
         Optional<Cultura> cultura = culturaRepository.findByNome("Maxixe");
 
         if(!cultura.isPresent()) {
-            culturaRepository.save(new Cultura("maxixe", 45, unidadeTempo.DIAS, 30, unidadeTempo.DIAS, true, 0, unidadeTempo.DIAS, 1, unidadeTempo.DIAS, "Tela Verde", 15,unidadePeso.KILOS) );
+            culturaRepository.save(new Cultura("maxixe", 45, UnidadeTempo.DIAS, 30, UnidadeTempo.DIAS, 15, UnidadeTempo.DIAS, true, 0, UnidadeTempo.DIAS, 1, UnidadeTempo.DIAS, "Tela Verde", 15,UnidadePeso.KILOS) );
         }
        
 

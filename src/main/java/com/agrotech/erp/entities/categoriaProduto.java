@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "categoriaProduto")
-public class categoriaProduto {
+public class CategoriaProduto {
 
 
     private static final long serialVersionUID = 1L;

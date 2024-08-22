@@ -1,6 +1,6 @@
 package com.agrotech.erp.entities;
 
-public class contabilidade {
+public class Contabilidade {
 
 
 // Custo Pago

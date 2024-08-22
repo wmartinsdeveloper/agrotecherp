@@ -1,6 +1,6 @@
-package com.agrotech.erp.entities.enums;
+package com.agrotech.erp.entities.Enums;
 
-public enum unidadeTempo {
+public enum UnidadeTempo {
 
     DIAS,MESES,ANOS
 }

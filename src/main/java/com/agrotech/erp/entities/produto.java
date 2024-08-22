@@ -2,7 +2,7 @@ package com.agrotech.erp.entities;
 
 import java.util.Date;
 
-import com.agrotech.erp.entities.enums.unidadePeso;
+import com.agrotech.erp.entities.Enums.UnidadePeso;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "produto")
-public class produto {
+public class Produto {
 
     private static final long serialVersionUID = 1L;
     
@@ -36,7 +36,7 @@ public class produto {
 
     @NotBlank(message = "Unidade de Peso é uma informação obrigatória.")
     @Column(name = "unidadePeso")
-    private unidadePeso unidadePeso;
+    private UnidadePeso unidadePeso;
 
     @NotBlank(message = "Peso é uma informação obrigatória.")
     @Column(name = "peso")

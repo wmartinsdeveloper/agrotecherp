@@ -1,5 +1,5 @@
 package com.agrotech.erp.entities;
 
-public class servico {
+public class Servico {
 
 }

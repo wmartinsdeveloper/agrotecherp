@@ -1,7 +1,7 @@
 package com.agrotech.erp.entities;
 
-import com.agrotech.erp.entities.enums.unidadePeso;
-import com.agrotech.erp.entities.enums.unidadeTempo;
+import com.agrotech.erp.entities.Enums.UnidadePeso;
+import com.agrotech.erp.entities.Enums.UnidadeTempo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,85 +22,77 @@ public class Cultura {
     private Long id;
 
     @NotBlank(message = "Nome é uma informação obrigatória.")
-    @Column(name = "nome", unique = true)
-    private String nome;
+    @Column(name = "Nome", unique = true)
+    private String Nome;
 
-    @Column(name = "cicloVida")
-    private int cicloVida;
+    @Column(name = "CicloVida")
+    private int CicloVida;
 
-    @Column(name = "unidadeCicloVida")
-    private unidadeTempo unidadeCicloVida;
+    @Column(name = "UnidadeCicloVida")
+    private UnidadeTempo UnidadeCicloVida;
 
+    @Column(name = "InicioProducao")
+    private int InicioProducao;
 
-    @Column(name = "inicioProducao")
-    private int inicioProducao;
-
-
-    @Column(name = "unidadeInicioProducao")
-    private unidadeTempo unidadeInicioProducao;
+    @Column(name = "UnidadeInicioProducao")
+    private UnidadeTempo UnidadeInicioProducao;
     
+    @Column(name = "CicloProducao")
+    private int CicloProducao; 
 
-    @Column(name = "safraUnica")    
-    private boolean safraUnica;
+    @Column(name = "UnidadeCicloProducao")
+    private UnidadeTempo UnidadeCicloProducao;    
 
+    @Column(name = "SafraUnica")    
+    private boolean SafraUnica;
 
-    @Column(name = "tempoEntreSafra")    
-    private int intervaloEntreSafra;
+    @Column(name = "IntervaloEntreSafra")    
+    private int IntervaloEntreSafra;
 
+    @Column(name = "UnidadeEntreSafra")
+    private UnidadeTempo UnidadeEntreSafra;    
 
-    @Column(name = "unidadeEntreSafra")
-    private unidadeTempo unidadeEntreSafra;    
+    @Column(name = "IntervaloColheita")    
+    private int IntervaloColheita;
 
+    @Column(name = "UnidadeIntervaloColheita")
+    private UnidadeTempo UnidadeIntervaloColheita;   
 
-    @Column(name = "intervaloColheita")    
-    private int intervaloColheita;
-
-
-    @Column(name = "unidadeIntervaloColheita")
-    private unidadeTempo unidadeIntervaloColheita;   
-
-
-    @Column(name = "embalagemVenda")    
-    private String embalagemVenda;    
-
-
-    @Column(name = "pesoVenda")    
-    private int pesoVenda;   
+    @Column(name = "EmbalagemVenda")    
+    private String EmbalagemVenda;    
 
 
-    @Column(name = "unidadePeso")    
-    private unidadePeso unidadePeso;
+    @Column(name = "PesoVenda")    
+    private int PesoVenda;   
+
+    @Column(name = "UnidadePeso")    
+    private UnidadePeso UnidadePeso;
 
     public Cultura() {
     }
 
-    public Cultura(String nome,
-             int cicloVida,
-            unidadeTempo unidadeCicloVida,
-            int inicioProducao,
-            unidadeTempo unidadeInicioProducao,
-            Boolean safraUnica,
-            int intervaloEntreSafra,
-            unidadeTempo unidadeEntreSafra,
-            int intervaloColheita,
-            unidadeTempo unidadeIntervaloColheita,
-            String embalagemVenda,
-            int pesoVenda,
-            unidadePeso unidadePeso) {
-        this.nome = nome;
-        this.cicloVida = cicloVida;
-        this.unidadeCicloVida = unidadeCicloVida;
-        this.inicioProducao = inicioProducao;
-        this.unidadeInicioProducao = unidadeInicioProducao;
-        this.safraUnica = safraUnica;
-        this.intervaloEntreSafra = intervaloEntreSafra;
-        this.unidadeEntreSafra = unidadeEntreSafra;
-        this.intervaloColheita = intervaloColheita;
-        this.unidadeIntervaloColheita = unidadeIntervaloColheita;
-        this.embalagemVenda = embalagemVenda;
-        this.pesoVenda = pesoVenda;
-        this.unidadePeso = unidadePeso;
+    public Cultura(@NotBlank(message = "Nome é uma informação obrigatória.") String nome, int cicloVida,
+            UnidadeTempo unidadeCicloVida, int inicioProducao, UnidadeTempo unidadeInicioProducao, int cicloProducao,
+            UnidadeTempo unidadeCicloProducao, boolean safraUnica, int intervaloEntreSafra,
+            UnidadeTempo unidadeEntreSafra, int intervaloColheita, UnidadeTempo unidadeIntervaloColheita,
+            String embalagemVenda, int pesoVenda, com.agrotech.erp.entities.Enums.UnidadePeso unidadePeso) {
+        Nome = nome;
+        CicloVida = cicloVida;
+        UnidadeCicloVida = unidadeCicloVida;
+        InicioProducao = inicioProducao;
+        UnidadeInicioProducao = unidadeInicioProducao;
+        CicloProducao = cicloProducao;
+        UnidadeCicloProducao = unidadeCicloProducao;
+        SafraUnica = safraUnica;
+        IntervaloEntreSafra = intervaloEntreSafra;
+        UnidadeEntreSafra = unidadeEntreSafra;
+        IntervaloColheita = intervaloColheita;
+        UnidadeIntervaloColheita = unidadeIntervaloColheita;
+        EmbalagemVenda = embalagemVenda;
+        PesoVenda = pesoVenda;
+        UnidadePeso = unidadePeso;
     }
+
 
 
     public static long getSerialversionuid() {
@@ -113,117 +105,139 @@ public class Cultura {
 
 
     public String getNome() {
-        return nome;
+        return Nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String Nome) {
+        this.Nome = Nome;
     }
 
     public int getCicloVida() {
-        return cicloVida;
+        return CicloVida;
     }
 
-    public void setCicloVida(int cicloVida) {
-        this.cicloVida = cicloVida;
+    public void setCicloVida(int CicloVida) {
+        this.CicloVida = CicloVida;
     }
 
-    public unidadeTempo getUnidadeCicloVida() {
-        return unidadeCicloVida;
+    public UnidadeTempo getUnidadeCicloVida() {
+        return UnidadeCicloVida;
     }
 
-    public void setUnidadeCicloVida(unidadeTempo unidadeCicloVida) {
-        this.unidadeCicloVida = unidadeCicloVida;
+    public void setUnidadeCicloVida(UnidadeTempo UnidadeCicloVida) {
+        this.UnidadeCicloVida = UnidadeCicloVida;
     }
 
     public int getInicioProducao() {
-        return inicioProducao;
+        return InicioProducao;
     }
 
-    public void setInicioProducao(int inicioProducao) {
-        this.inicioProducao = inicioProducao;
+    public void setInicioProducao(int InicioProducao) {
+        this.InicioProducao = InicioProducao;
     }
 
-    public unidadeTempo getUnidadeInicioProducao() {
-        return unidadeInicioProducao;
+    public UnidadeTempo getUnidadeInicioProducao() {
+        return UnidadeInicioProducao;
     }
 
-    public void setUnidadeInicioProducao(unidadeTempo unidadeInicioProducao) {
-        this.unidadeInicioProducao = unidadeInicioProducao;
+    public void setUnidadeInicioProducao(UnidadeTempo UnidadeInicioProducao) {
+        this.UnidadeInicioProducao = UnidadeInicioProducao;
     }
 
+
+    
     public boolean isSafraUnica() {
-        return safraUnica;
+        return SafraUnica;
     }
 
-    public void setSafraUnica(boolean safraUnica) {
-        this.safraUnica = safraUnica;
+    public void setSafraUnica(boolean SafraUnica) {
+        this.SafraUnica = SafraUnica;
     }
 
     public int getIntervaloEntreSafra() {
-        return intervaloEntreSafra;
+        return IntervaloEntreSafra;
     }
 
-    public void setIntervaloEntreSafra(int intervaloEntreSafra) {
-        this.intervaloEntreSafra = intervaloEntreSafra;
+    public void setIntervaloEntreSafra(int IntervaloEntreSafra) {
+        this.IntervaloEntreSafra = IntervaloEntreSafra;
     }
 
-    public unidadeTempo getUnidadeEntreSafra() {
-        return unidadeEntreSafra;
+    public UnidadeTempo getUnidadeEntreSafra() {
+        return UnidadeEntreSafra;
     }
 
-    public void setUnidadeEntreSafra(unidadeTempo unidadeEntreSafra) {
-        this.unidadeEntreSafra = unidadeEntreSafra;
+    public void setUnidadeEntreSafra(UnidadeTempo UnidadeEntreSafra) {
+        this.UnidadeEntreSafra = UnidadeEntreSafra;
     }
 
     public int getIntervaloColheita() {
-        return intervaloColheita;
+        return IntervaloColheita;
     }
 
-    public void setIntervaloColheita(int intervaloColheita) {
-        this.intervaloColheita = intervaloColheita;
+    public void setIntervaloColheita(int IntervaloColheita) {
+        this.IntervaloColheita = IntervaloColheita;
     }
 
-    public unidadeTempo getUnidadeIntervaloColheita() {
-        return unidadeIntervaloColheita;
+    public UnidadeTempo getUnidadeIntervaloColheita() {
+        return UnidadeIntervaloColheita;
     }
 
-    public void setUnidadeIntervaloColheita(unidadeTempo unidadeIntervaloColheita) {
-        this.unidadeIntervaloColheita = unidadeIntervaloColheita;
+    public void setUnidadeIntervaloColheita(UnidadeTempo UnidadeIntervaloColheita) {
+        this.UnidadeIntervaloColheita = UnidadeIntervaloColheita;
     }
 
     public String getEmbalagemVenda() {
-        return embalagemVenda;
+        return EmbalagemVenda;
     }
 
-    public void setEmbalagemVenda(String embalagemVenda) {
-        this.embalagemVenda = embalagemVenda;
+    public void setEmbalagemVenda(String EmbalagemVenda) {
+        this.EmbalagemVenda = EmbalagemVenda;
     }
 
     public int getPesoVenda() {
-        return pesoVenda;
+        return PesoVenda;
     }
 
-    public void setPesoVenda(int pesoVenda) {
-        this.pesoVenda = pesoVenda;
+    public void setPesoVenda(int PesoVenda) {
+        this.PesoVenda = PesoVenda;
     }
 
-    public unidadePeso getUnidadePeso() {
-        return unidadePeso;
+    public UnidadePeso getUnidadePeso() {
+        return UnidadePeso;
     }
 
-    public void setUnidadePeso(unidadePeso unidadePeso) {
-        this.unidadePeso = unidadePeso;
+    public void setUnidadePeso(UnidadePeso UnidadePeso) {
+        this.UnidadePeso = UnidadePeso;
     }
 
     @Override
     public String toString() {
-        return "Cultura [id=" + id + ", nome=" + nome + ", cicloVida=" + cicloVida + ", unidadeCicloVida="
-                + unidadeCicloVida + ", inicioProducao=" + inicioProducao + ", unidadeInicioProducao="
-                + unidadeInicioProducao + ", safraUnica=" + safraUnica + ", intervaloEntreSafra=" + intervaloEntreSafra
-                + ", unidadeEntreSafra=" + unidadeEntreSafra + ", intervaloColheita=" + intervaloColheita
-                + ", unidadeIntervaloColheita=" + unidadeIntervaloColheita + ", embalagemVenda=" + embalagemVenda
-                + ", pesoVenda=" + pesoVenda + ", unidadePeso=" + unidadePeso + "]";
+        return "Cultura [id=" + id + ", Nome=" + Nome + ", CicloVida=" + CicloVida + ", UnidadeCicloVida="
+                + UnidadeCicloVida + ", InicioProducao=" + InicioProducao + ", UnidadeInicioProducao="
+                + UnidadeInicioProducao + ", SafraUnica=" + SafraUnica + ", IntervaloEntreSafra=" + IntervaloEntreSafra
+                + ", UnidadeEntreSafra=" + UnidadeEntreSafra + ", IntervaloColheita=" + IntervaloColheita
+                + ", UnidadeIntervaloColheita=" + UnidadeIntervaloColheita + ", EmbalagemVenda=" + EmbalagemVenda
+                + ", PesoVenda=" + PesoVenda + ", UnidadePeso=" + UnidadePeso + "]";
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getCicloProducao() {
+        return CicloProducao;
+    }
+
+    public void setCicloProducao(int cicloProducao) {
+        CicloProducao = cicloProducao;
+    }
+
+    public UnidadeTempo getUnidadeCicloProducao() {
+        return UnidadeCicloProducao;
+    }
+
+    public void setUnidadeCicloProducao(UnidadeTempo unidadeCicloProducao) {
+        UnidadeCicloProducao = unidadeCicloProducao;
     }  
 
 

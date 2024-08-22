@@ -1,6 +1,6 @@
-package com.agrotech.erp.entities.enums;
+package com.agrotech.erp.entities.Enums;
 
-public enum unidadePeso {
+public enum UnidadePeso {
 
     GRAMAS,KILOS,MILILITROS,LITROS,UNITARIO
 }
