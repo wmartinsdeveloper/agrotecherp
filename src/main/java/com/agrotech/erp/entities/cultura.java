@@ -9,7 +9,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "cultura")
@@ -21,9 +20,8 @@ public class Cultura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Nome é uma informação obrigatória.")
-    @Column(name = "Nome", unique = true)
-    private String Nome;
+    @Column(name = "nome", unique = true)
+    private String nome;
 
     @Column(name = "CicloVida")
     private int CicloVida;
@@ -45,6 +43,9 @@ public class Cultura {
 
     @Column(name = "SafraUnica")    
     private boolean SafraUnica;
+
+    @Column(name="QuantidadeSafra")
+    private int QuantidadeSafra;
 
     @Column(name = "IntervaloEntreSafra")    
     private int IntervaloEntreSafra;
@@ -68,15 +69,15 @@ public class Cultura {
     @Column(name = "UnidadePeso")    
     private UnidadePeso UnidadePeso;
 
-    public Cultura() {
-    }
+    public Cultura(){}
 
-    public Cultura(@NotBlank(message = "Nome é uma informação obrigatória.") String nome, int cicloVida,
+    public Cultura(String Nome, int cicloVida,
             UnidadeTempo unidadeCicloVida, int inicioProducao, UnidadeTempo unidadeInicioProducao, int cicloProducao,
-            UnidadeTempo unidadeCicloProducao, boolean safraUnica, int intervaloEntreSafra,
-            UnidadeTempo unidadeEntreSafra, int intervaloColheita, UnidadeTempo unidadeIntervaloColheita,
-            String embalagemVenda, int pesoVenda, com.agrotech.erp.entities.Enums.UnidadePeso unidadePeso) {
-        Nome = nome;
+            UnidadeTempo unidadeCicloProducao, boolean safraUnica, int quantidadeSafra,
+   int intervaloEntreSafra, UnidadeTempo unidadeEntreSafra,
+            int intervaloColheita, UnidadeTempo unidadeIntervaloColheita, String embalagemVenda, int pesoVenda,
+            com.agrotech.erp.entities.Enums.UnidadePeso unidadePeso) {
+        nome = Nome;
         CicloVida = cicloVida;
         UnidadeCicloVida = unidadeCicloVida;
         InicioProducao = inicioProducao;
@@ -84,6 +85,7 @@ public class Cultura {
         CicloProducao = cicloProducao;
         UnidadeCicloProducao = unidadeCicloProducao;
         SafraUnica = safraUnica;
+        QuantidadeSafra = quantidadeSafra;
         IntervaloEntreSafra = intervaloEntreSafra;
         UnidadeEntreSafra = unidadeEntreSafra;
         IntervaloColheita = intervaloColheita;
@@ -93,135 +95,48 @@ public class Cultura {
         UnidadePeso = unidadePeso;
     }
 
-
-
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
-
     public Long getId() {
         return id;
     }
 
-
-    public String getNome() {
-        return Nome;
+    public String getnome() {
+        return nome;
     }
 
-    public void setNome(String Nome) {
-        this.Nome = Nome;
+    public void setnome(String Nome) {
+        nome = Nome;
     }
 
     public int getCicloVida() {
         return CicloVida;
     }
 
-    public void setCicloVida(int CicloVida) {
-        this.CicloVida = CicloVida;
+    public void setCicloVida(int cicloVida) {
+        CicloVida = cicloVida;
     }
 
     public UnidadeTempo getUnidadeCicloVida() {
         return UnidadeCicloVida;
     }
 
-    public void setUnidadeCicloVida(UnidadeTempo UnidadeCicloVida) {
-        this.UnidadeCicloVida = UnidadeCicloVida;
+    public void setUnidadeCicloVida(UnidadeTempo unidadeCicloVida) {
+        UnidadeCicloVida = unidadeCicloVida;
     }
 
     public int getInicioProducao() {
         return InicioProducao;
     }
 
-    public void setInicioProducao(int InicioProducao) {
-        this.InicioProducao = InicioProducao;
+    public void setInicioProducao(int inicioProducao) {
+        InicioProducao = inicioProducao;
     }
 
     public UnidadeTempo getUnidadeInicioProducao() {
         return UnidadeInicioProducao;
     }
 
-    public void setUnidadeInicioProducao(UnidadeTempo UnidadeInicioProducao) {
-        this.UnidadeInicioProducao = UnidadeInicioProducao;
-    }
-
-
-    
-    public boolean isSafraUnica() {
-        return SafraUnica;
-    }
-
-    public void setSafraUnica(boolean SafraUnica) {
-        this.SafraUnica = SafraUnica;
-    }
-
-    public int getIntervaloEntreSafra() {
-        return IntervaloEntreSafra;
-    }
-
-    public void setIntervaloEntreSafra(int IntervaloEntreSafra) {
-        this.IntervaloEntreSafra = IntervaloEntreSafra;
-    }
-
-    public UnidadeTempo getUnidadeEntreSafra() {
-        return UnidadeEntreSafra;
-    }
-
-    public void setUnidadeEntreSafra(UnidadeTempo UnidadeEntreSafra) {
-        this.UnidadeEntreSafra = UnidadeEntreSafra;
-    }
-
-    public int getIntervaloColheita() {
-        return IntervaloColheita;
-    }
-
-    public void setIntervaloColheita(int IntervaloColheita) {
-        this.IntervaloColheita = IntervaloColheita;
-    }
-
-    public UnidadeTempo getUnidadeIntervaloColheita() {
-        return UnidadeIntervaloColheita;
-    }
-
-    public void setUnidadeIntervaloColheita(UnidadeTempo UnidadeIntervaloColheita) {
-        this.UnidadeIntervaloColheita = UnidadeIntervaloColheita;
-    }
-
-    public String getEmbalagemVenda() {
-        return EmbalagemVenda;
-    }
-
-    public void setEmbalagemVenda(String EmbalagemVenda) {
-        this.EmbalagemVenda = EmbalagemVenda;
-    }
-
-    public int getPesoVenda() {
-        return PesoVenda;
-    }
-
-    public void setPesoVenda(int PesoVenda) {
-        this.PesoVenda = PesoVenda;
-    }
-
-    public UnidadePeso getUnidadePeso() {
-        return UnidadePeso;
-    }
-
-    public void setUnidadePeso(UnidadePeso UnidadePeso) {
-        this.UnidadePeso = UnidadePeso;
-    }
-
-    @Override
-    public String toString() {
-        return "Cultura [id=" + id + ", Nome=" + Nome + ", CicloVida=" + CicloVida + ", UnidadeCicloVida="
-                + UnidadeCicloVida + ", InicioProducao=" + InicioProducao + ", UnidadeInicioProducao="
-                + UnidadeInicioProducao + ", SafraUnica=" + SafraUnica + ", IntervaloEntreSafra=" + IntervaloEntreSafra
-                + ", UnidadeEntreSafra=" + UnidadeEntreSafra + ", IntervaloColheita=" + IntervaloColheita
-                + ", UnidadeIntervaloColheita=" + UnidadeIntervaloColheita + ", EmbalagemVenda=" + EmbalagemVenda
-                + ", PesoVenda=" + PesoVenda + ", UnidadePeso=" + UnidadePeso + "]";
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setUnidadeInicioProducao(UnidadeTempo unidadeInicioProducao) {
+        UnidadeInicioProducao = unidadeInicioProducao;
     }
 
     public int getCicloProducao() {
@@ -238,10 +153,118 @@ public class Cultura {
 
     public void setUnidadeCicloProducao(UnidadeTempo unidadeCicloProducao) {
         UnidadeCicloProducao = unidadeCicloProducao;
-    }  
+    }
 
+    public boolean isSafraUnica() {
+        return SafraUnica;
+    }
 
-  
+    public void setSafraUnica(boolean safraUnica) {
+        SafraUnica = safraUnica;
+    }
+
+    public int getQuantidadeSafra() {
+        return QuantidadeSafra;
+    }
+
+    public void setQuantidadeSafra(int quantidadeSafra) {
+        QuantidadeSafra = quantidadeSafra;
+    }
+
+    public int getIntervaloEntreSafra() {
+        return IntervaloEntreSafra;
+    }
+
+    public void setIntervaloEntreSafra(int intervaloEntreSafra) {
+        IntervaloEntreSafra = intervaloEntreSafra;
+    }
+
+    public UnidadeTempo getUnidadeEntreSafra() {
+        return UnidadeEntreSafra;
+    }
+
+    public void setUnidadeEntreSafra(UnidadeTempo unidadeEntreSafra) {
+        UnidadeEntreSafra = unidadeEntreSafra;
+    }
+
+    public int getIntervaloColheita() {
+        return IntervaloColheita;
+    }
+
+    public void setIntervaloColheita(int intervaloColheita) {
+        IntervaloColheita = intervaloColheita;
+    }
+
+    public UnidadeTempo getUnidadeIntervaloColheita() {
+        return UnidadeIntervaloColheita;
+    }
+
+    public void setUnidadeIntervaloColheita(UnidadeTempo unidadeIntervaloColheita) {
+        UnidadeIntervaloColheita = unidadeIntervaloColheita;
+    }
+
+    public String getEmbalagemVenda() {
+        return EmbalagemVenda;
+    }
+
+    public void setEmbalagemVenda(String embalagemVenda) {
+        EmbalagemVenda = embalagemVenda;
+    }
+
+    public int getPesoVenda() {
+        return PesoVenda;
+    }
+
+    public void setPesoVenda(int pesoVenda) {
+        PesoVenda = pesoVenda;
+    }
+
+    public UnidadePeso getUnidadePeso() {
+        return UnidadePeso;
+    }
+
+    public void setUnidadePeso(UnidadePeso unidadePeso) {
+        UnidadePeso = unidadePeso;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Cultura other = (Cultura) obj;
+        if (nome == null) {
+            if (other.nome != null)
+                return false;
+        } else if (!nome.equals(other.nome))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Cultura [id=" + id + ", nome=" + nome + ", CicloVida=" + CicloVida + ", UnidadeCicloVida="
+                + UnidadeCicloVida + ", InicioProducao=" + InicioProducao + ", UnidadeInicioProducao="
+                + UnidadeInicioProducao + ", CicloProducao=" + CicloProducao + ", UnidadeCicloProducao="
+                + UnidadeCicloProducao + ", SafraUnica=" + SafraUnica + ", QuantidadeSafra=" + QuantidadeSafra
+                + ", IntervaloEntreSafra="
+                + IntervaloEntreSafra + ", UnidadeEntreSafra=" + UnidadeEntreSafra + ", IntervaloColheita="
+                + IntervaloColheita + ", UnidadeIntervaloColheita=" + UnidadeIntervaloColheita + ", EmbalagemVenda="
+                + EmbalagemVenda + ", PesoVenda=" + PesoVenda + ", UnidadePeso=" + UnidadePeso + "]";
+    }
+
+    
 
 
     

@@ -24,7 +24,9 @@ public class DataInicializer  implements CommandLineRunner {
         Optional<Cultura> cultura = culturaRepository.findByNome("Maxixe");
 
         if(!cultura.isPresent()) {
-            culturaRepository.save(new Cultura("maxixe", 45, UnidadeTempo.DIAS, 30, UnidadeTempo.DIAS, 15, UnidadeTempo.DIAS, true, 0, UnidadeTempo.DIAS, 1, UnidadeTempo.DIAS, "Tela Verde", 15,UnidadePeso.KILOS) );
+            Cultura aux = new Cultura("Maxixe", 75, UnidadeTempo.DIAS, 60, UnidadeTempo.DIAS, 15, UnidadeTempo.DIAS, true, 1, 0, UnidadeTempo.NA, 3, UnidadeTempo.DIAS, "Tela de 15KG", 15, UnidadePeso.KILOS);
+            culturaRepository.save(aux);
+
         }
        
 

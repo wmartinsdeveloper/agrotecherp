@@ -33,7 +33,7 @@ public class CulturaService {
         try{
             if(culturaOptional.isPresent()) {
                 Cultura cultura = culturaOptional.get();
-                cultura.setNome(dtoCultura.Nome()); 
+                cultura.setnome(dtoCultura.Nome()); 
                 cultura.setCicloVida(dtoCultura.CicloVida());
                 cultura.setUnidadeCicloVida(dtoCultura.UnidadeCicloVida());
                 cultura.setInicioProducao(dtoCultura.InicioProducao());
@@ -41,6 +41,7 @@ public class CulturaService {
                 cultura.setCicloProducao(dtoCultura.CicloProducao());
                 cultura.setUnidadeCicloProducao(dtoCultura.UnidadeCicloProducao());
                 cultura.setSafraUnica(dtoCultura.SafraUnica());
+                cultura.setQuantidadeSafra(dtoCultura.QuantidadeSafra());
                 cultura.setIntervaloEntreSafra(dtoCultura.IntervaloEntreSafra());
                 cultura.setUnidadeEntreSafra(dtoCultura.UnidadeEntreSafra());
                 cultura.setIntervaloColheita(dtoCultura.IntervaloColheita());
@@ -59,6 +60,7 @@ public class CulturaService {
                                                  dtoCultura.CicloProducao(),
                                                  dtoCultura.UnidadeCicloProducao(), 
                                                  dtoCultura.SafraUnica(), 
+                                                 dtoCultura.QuantidadeSafra(),
                                                  dtoCultura.IntervaloEntreSafra(), 
                                                  dtoCultura.UnidadeEntreSafra(), 
                                                  dtoCultura.IntervaloColheita(), 

@@ -12,7 +12,7 @@ import com.agrotech.erp.entities.Cultura;
 @Repository
 public interface CulturaRepository extends CrudRepository<Cultura, Long> {
 
-    public Optional<Cultura> findByNome(String nome);
+    public Optional<Cultura> findByNome(String Nome);
 
 
 }
