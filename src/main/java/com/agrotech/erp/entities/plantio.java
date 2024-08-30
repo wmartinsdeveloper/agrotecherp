@@ -1,5 +1,10 @@
 package com.agrotech.erp.entities;
 
+import java.util.Date;
+import java.util.Set;
+
+import com.agrotech.erp.entities.Enums.UnidadeMedida;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +20,27 @@ public class Plantio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Date dataInicial;
+
+    private Date dataFinal;
+
+    private String nomeArea;
+
+    private String descricaoArea;
+
+    private int area;
+
+    private UnidadeMedida medidaArea;
+
+    private Set<Manejo> manejo;
+
+    private Set<Producao> producao; 
+
+    
+
+
+
 
     
 }

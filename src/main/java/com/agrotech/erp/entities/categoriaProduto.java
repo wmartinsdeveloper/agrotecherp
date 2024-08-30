@@ -16,6 +16,9 @@ import jakarta.persistence.Table;
 @Table(name = "categoriaProduto")
 public class CategoriaProduto {
 
+    /* Entidade para cadastro dos tipos de produtos como:
+     * Inseticidas, bactericidas, Adubação Foliar, Fungicidas ..
+     */
 
     private static final long serialVersionUID = 1L;
     

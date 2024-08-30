@@ -75,6 +75,8 @@ public class Cultura {
     @Enumerated(EnumType.STRING)
     @Column(name = "UnidadePeso")    
     private UnidadePeso UnidadePeso;
+
+    
     public Cultura(){}
 
     public Cultura(String Nome, int cicloVida,
