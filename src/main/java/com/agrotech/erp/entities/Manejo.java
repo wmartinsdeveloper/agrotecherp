@@ -12,8 +12,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
-@Entity(name="manejo")
+@Entity
+@Table(name = "manejo")
 public class Manejo {
 
     
@@ -24,6 +26,7 @@ public class Manejo {
     private String nome;
 
     private String descricao;
+
 
     @JsonIgnore
     @OneToOne(fetch = FetchType.EAGER)
@@ -37,7 +40,8 @@ public class Manejo {
     public Manejo() {
     }
 
-    public Manejo(String nome, String descricao, Cultura cultura, Set<ManejoAtividade> manejoAtividade) {
+    public Manejo(String nome, String descricao, Cultura cultura,
+            Set<ManejoAtividade> manejoAtividade) {
         this.nome = nome;
         this.descricao = descricao;
         this.cultura = cultura;

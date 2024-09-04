@@ -62,7 +62,7 @@ public class DataInicializer  implements CommandLineRunner {
             
                 Optional<CategoriaProduto> categoriaProduto1 = CategoriaProdutoRepository.findByNome("Inseticida");
 
-                Produto aux_produto = new Produto(date, "Recop", " ", 2, UnidadePeso.KILOS, 1, 10.00, 1, 0, 10.00, TipoCompra.INVESTIDO,Set.of(categoriaProduto1.get()));
+                Produto aux_produto = new Produto(date,"0001", "Recop", " ", 2, UnidadePeso.KILOS, 1, 10.00, 1, 0, 10.00, TipoCompra.INVESTIDO,Set.of(categoriaProduto1.get()));
                 produtoRepository.save(aux_produto);
     
             }

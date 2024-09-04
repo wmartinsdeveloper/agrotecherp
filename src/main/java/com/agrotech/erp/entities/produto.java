@@ -33,6 +33,9 @@ public class Produto {
     @Column(name = "dataAquisicao", unique = true)
     private Date dataAquisicao;	 
 
+    @Column(name = "codigo")    
+    private String codigo;
+
     @Column(name = "nome", unique = true    )
     private String nome;
 
@@ -52,7 +55,7 @@ public class Produto {
     @Column(name = "preco")    
     private double preco;
 
-    @Column(name = "precoMedida")    //calculado
+    @Column(name = "precoMedida")   
     private double precoMedidda;
 
     @Column(name = "desconto")
@@ -67,15 +70,16 @@ public class Produto {
    
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "Produto_Categoria", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_produto_id"))
+    @JoinTable(name = "ProdutoCategoria", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_produto_id"))
     private Set<CategoriaProduto> categoriaProduto;
 
     public Produto(){}
 
 
-    public Produto(Date dataAquisicao, String nome, String descricao, int peso, UnidadePeso unidadePeso, int quantidade,
+    public Produto(Date dataAquisicao,String codigo, String nome, String descricao, int peso, UnidadePeso unidadePeso, int quantidade,
             double preco, double precoMedidda, double desconto, double precoTotal, TipoCompra tipoCompra) {
         this.dataAquisicao = dataAquisicao;
+        this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
         this.peso = peso;
@@ -90,10 +94,11 @@ public class Produto {
 
     
 
-    public Produto(Date dataAquisicao, String nome, String descricao, int peso, UnidadePeso unidadePeso, int quantidade,
+    public Produto(Date dataAquisicao,String codigo, String nome, String descricao, int peso, UnidadePeso unidadePeso, int quantidade,
             double preco, double precoMedidda, double desconto, double precoTotal, TipoCompra tipoCompra,
             Set<CategoriaProduto> categoriaProduto) {
         this.dataAquisicao = dataAquisicao;
+        this.codigo = codigo;        
         this.nome = nome;
         this.descricao = descricao;
         this.peso = peso;
@@ -128,6 +133,8 @@ public class Produto {
         this.dataAquisicao = dataAquisicao;
     }
 
+
+    
     public String getNome() {
         return nome;
     }
@@ -253,6 +260,16 @@ public class Produto {
 
     public void setCategoriaProduto(Set<CategoriaProduto> categoriaProduto) {
         this.categoriaProduto = categoriaProduto;
+    }
+
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
 

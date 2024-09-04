@@ -5,9 +5,12 @@ import java.util.Date;
 import com.agrotech.erp.entities.Enums.UnidadeVenda;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,8 +25,12 @@ public class Producao {
 
     private int quantidade;
 
+    @Enumerated(EnumType.STRING)
     private UnidadeVenda unidade; 
 
-    
+    @ManyToOne
+    private Plantio plantio;
+
+
 
 }
