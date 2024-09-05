@@ -1,5 +1,6 @@
 package com.agrotech.erp.entities;
 
+import java.util.Date;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -22,6 +23,8 @@ public class Manejo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    private Date data;
 
     private String nome;
 
@@ -35,19 +38,41 @@ public class Manejo {
 
     @JsonIgnore
     @OneToMany(mappedBy = "manejo", fetch = FetchType.EAGER)
-    private Set<ManejoAtividade> manejoAtividade;
+    private Set<ManejoAtividadeProduto> manejoAtividadeProduto;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "manejo", fetch = FetchType.EAGER)
+    private Set<ManejoAtividadeServico> manejoAtividadeServico;    
 
     public Manejo() {
     }
 
-    public Manejo(String nome, String descricao, Cultura cultura,
-            Set<ManejoAtividade> manejoAtividade) {
+    public Manejo(String nome, String descricao, Cultura cultura, Set<ManejoAtividadeProduto> manejoAtividadeProduto,
+            Set<ManejoAtividadeServico> manejoAtividadeServico) {
         this.nome = nome;
         this.descricao = descricao;
         this.cultura = cultura;
-        this.manejoAtividade = manejoAtividade;
+        this.manejoAtividadeProduto = manejoAtividadeProduto;
+        this.manejoAtividadeServico = manejoAtividadeServico;
     }
 
+
+    public Manejo(String nome, String descricao, Cultura cultura, Set<ManejoAtividadeServico> manejoAtividadeServico) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.cultura = cultura;
+        this.manejoAtividadeServico = manejoAtividadeServico;
+    }
+
+    public Manejo(String nome, String descricao, Cultura cultura) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.cultura = cultura;
+    }
+
+
+
+    
     public Long getId() {
         return id;
     }
@@ -76,16 +101,45 @@ public class Manejo {
         this.cultura = cultura;
     }
 
-    public Set<ManejoAtividade> getManejoAtividade() {
-        return manejoAtividade;
+    public Set<ManejoAtividadeProduto> getManejoAtividadeProduto() {
+        return manejoAtividadeProduto;
     }
 
-    public void setManejoAtividade(Set<ManejoAtividade> manejoAtividade) {
-        this.manejoAtividade = manejoAtividade;
+    public void setManejoAtividadeProduto(Set<ManejoAtividadeProduto> manejoAtividadeProduto) {
+        this.manejoAtividadeProduto = manejoAtividadeProduto;
+    }
+
+    public Set<ManejoAtividadeServico> getManejoAtividadeServico() {
+        return manejoAtividadeServico;
+    }
+
+    public void setManejoAtividadeServico(Set<ManejoAtividadeServico> manejoAtividadeServico) {
+        this.manejoAtividadeServico = manejoAtividadeServico;
+    }
+
+    @Override
+    public String toString() {
+        return "Manejo [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", cultura=" + cultura
+                + ", manejoAtividadeProduto=" + manejoAtividadeProduto + ", manejoAtividadeServico="
+                + manejoAtividadeServico + "]";
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 
 
-    
+
+
+
 
 
     

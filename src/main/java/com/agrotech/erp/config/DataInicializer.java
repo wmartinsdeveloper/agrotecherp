@@ -3,7 +3,6 @@ package com.agrotech.erp.config;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import com.agrotech.erp.entities.CategoriaProduto;
 import com.agrotech.erp.entities.Cultura;
 import com.agrotech.erp.entities.Produto;
-import com.agrotech.erp.entities.Enums.TipoCompra;
 import com.agrotech.erp.entities.Enums.UnidadePeso;
 import com.agrotech.erp.entities.Enums.UnidadeTempo;
 import com.agrotech.erp.repositories.CategoriaProdutoRepository;
@@ -62,8 +60,8 @@ public class DataInicializer  implements CommandLineRunner {
             
                 Optional<CategoriaProduto> categoriaProduto1 = CategoriaProdutoRepository.findByNome("Inseticida");
 
-                Produto aux_produto = new Produto(date,"0001", "Recop", " ", 2, UnidadePeso.KILOS, 1, 10.00, 1, 0, 10.00, TipoCompra.INVESTIDO,Set.of(categoriaProduto1.get()));
-                produtoRepository.save(aux_produto);
+                //Produto aux_produto = new Produto(date,"0001", "Recop", " ", 2, UnidadePeso.KILOS, 1, 10.00, 1, 0, 10.00, TipoInvestimento.INVESTIDO,Set.of(categoriaProduto1.get()));
+                //produtoRepository.save(aux_produto);
     
             }
 

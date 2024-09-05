@@ -1,9 +1,11 @@
 package com.agrotech.erp.entities;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
-import com.agrotech.erp.entities.Enums.TipoCompra;
+import com.agrotech.erp.entities.Enums.TipoCusto;
+import com.agrotech.erp.entities.Enums.TipoInvestimento;
 import com.agrotech.erp.entities.Enums.UnidadePeso;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -18,6 +20,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -30,8 +33,8 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "dataAquisicao", unique = true)
-    private Date dataAquisicao;	 
+    @Column(name = "data", unique = true)
+    private Date data;	 
 
     @Column(name = "codigo")    
     private String codigo;
@@ -49,66 +52,37 @@ public class Produto {
     @Column(name = "unidadePeso")
     private UnidadePeso unidadePeso;
 
-    @Column(name = "quantidade")    
-    private int quantidade;
-
-    @Column(name = "preco")    
-    private double preco;
-
-    @Column(name = "precoMedida")   
-    private double precoMedidda;
-
-    @Column(name = "desconto")
-    private double desconto;
-
-    @Column(name = "precoTotal")
-    private double precoTotal;
+     @Enumerated(EnumType.STRING)
+    @Column(name = "tipoInvestimento")
+    private TipoInvestimento tipoInvestimento;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipoCompra")
-    private TipoCompra tipoCompra;
+    @Column(name = "tipoCusto")
+    private TipoCusto tipoCusto; 
    
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "ProdutoCategoria", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_produto_id"))
     private Set<CategoriaProduto> categoriaProduto;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "produto", fetch = FetchType.EAGER)    
+    private List<PrecoProduto> precoProduto;    
+
+
     public Produto(){}
 
 
-    public Produto(Date dataAquisicao,String codigo, String nome, String descricao, int peso, UnidadePeso unidadePeso, int quantidade,
-            double preco, double precoMedidda, double desconto, double precoTotal, TipoCompra tipoCompra) {
-        this.dataAquisicao = dataAquisicao;
+    public Produto(Date data, String codigo, String nome, String descricao, int peso, UnidadePeso unidadePeso,
+            TipoInvestimento tipoInvestimento, TipoCusto tipoCusto, Set<CategoriaProduto> categoriaProduto) {
+        this.data = data;
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
         this.peso = peso;
         this.unidadePeso = unidadePeso;
-        this.quantidade = quantidade;
-        this.preco = preco;
-        this.precoMedidda = precoMedidda;
-        this.desconto = desconto;
-        this.precoTotal = precoTotal;
-        this.tipoCompra = tipoCompra;
-    }
-
-    
-
-    public Produto(Date dataAquisicao,String codigo, String nome, String descricao, int peso, UnidadePeso unidadePeso, int quantidade,
-            double preco, double precoMedidda, double desconto, double precoTotal, TipoCompra tipoCompra,
-            Set<CategoriaProduto> categoriaProduto) {
-        this.dataAquisicao = dataAquisicao;
-        this.codigo = codigo;        
-        this.nome = nome;
-        this.descricao = descricao;
-        this.peso = peso;
-        this.unidadePeso = unidadePeso;
-        this.quantidade = quantidade;
-        this.preco = preco;
-        this.precoMedidda = precoMedidda;
-        this.desconto = desconto;
-        this.precoTotal = precoTotal;
-        this.tipoCompra = tipoCompra;
+        this.tipoInvestimento = tipoInvestimento;
+        this.tipoCusto = tipoCusto;
         this.categoriaProduto = categoriaProduto;
     }
 
@@ -117,149 +91,18 @@ public class Produto {
         return serialVersionUID;
     }
 
+
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getDataAquisicao() {
-        return dataAquisicao;
-    }
-
-    public void setDataAquisicao(Date dataAquisicao) {
-        this.dataAquisicao = dataAquisicao;
+    public Date getData() {
+        return data;
     }
 
 
-    
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public int getPeso() {
-        return peso;
-    }
-
-    public void setPeso(int peso) {
-        this.peso = peso;
-    }
-
-    public UnidadePeso getUnidadePeso() {
-        return unidadePeso;
-    }
-
-    public void setUnidadePeso(UnidadePeso unidadePeso) {
-        this.unidadePeso = unidadePeso;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
-
-    public double getPrecoMedidda() {
-        return precoMedidda;
-    }
-
-    public void setPrecoMedidda(double precoMedidda) {
-        this.precoMedidda = precoMedidda;
-    }
-
-    public double getDesconto() {
-        return desconto;
-    }
-
-    public void setDesconto(double desconto) {
-        this.desconto = desconto;
-    }
-
-    public double getPrecoTotal() {
-        return precoTotal;
-    }
-
-    public void setPrecoTotal(double precoTotal) {
-        this.precoTotal = precoTotal;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-        return result;
-    }
-
-
-    public TipoCompra getTipoCompra() {
-        return tipoCompra;
-    }
-
-    public void setTipoCompra(TipoCompra tipoCompra) {
-        this.tipoCompra = tipoCompra;
-    }
-
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Produto other = (Produto) obj;
-        if (nome == null) {
-            if (other.nome != null)
-                return false;
-        } else if (!nome.equals(other.nome))
-            return false;
-        return true;
-    }
-
-
-
-    @Override
-    public String toString() {
-        return "Produto [id=" + id + ", dataAquisicao=" + dataAquisicao + ", nome=" + nome + ", descricao=" + descricao
-                + ", peso=" + peso + ", unidadePeso=" + unidadePeso + ", quantidade=" + quantidade + ", preco=" + preco
-                + ", precoMedidda=" + precoMedidda + ", desconto=" + desconto + ", precoTotal=" + precoTotal
-                + ", tipoCompra=" + tipoCompra + "]";
-    }
-
-
-    public Set<CategoriaProduto> getCategoriaProduto() {
-        return categoriaProduto;
-    }
-
-
-    public void setCategoriaProduto(Set<CategoriaProduto> categoriaProduto) {
-        this.categoriaProduto = categoriaProduto;
+    public void setData(Date data) {
+        this.data = data;
     }
 
 
@@ -273,7 +116,86 @@ public class Produto {
     }
 
 
-    
+    public String getNome() {
+        return nome;
+    }
+
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+
+    public int getPeso() {
+        return peso;
+    }
+
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
+
+
+    public UnidadePeso getUnidadePeso() {
+        return unidadePeso;
+    }
+
+
+    public void setUnidadePeso(UnidadePeso unidadePeso) {
+        this.unidadePeso = unidadePeso;
+    }
+
+
+    public TipoInvestimento getTipoInvestimento() {
+        return tipoInvestimento;
+    }
+
+
+    public void setTipoInvestimento(TipoInvestimento tipoInvestimento) {
+        this.tipoInvestimento = tipoInvestimento;
+    }
+
+
+    public TipoCusto getTipoCusto() {
+        return tipoCusto;
+    }
+
+
+    public void setTipoCusto(TipoCusto tipoCusto) {
+        this.tipoCusto = tipoCusto;
+    }
+
+
+    public Set<CategoriaProduto> getCategoriaProduto() {
+        return categoriaProduto;
+    }
+
+
+    public void setCategoriaProduto(Set<CategoriaProduto> categoriaProduto) {
+        this.categoriaProduto = categoriaProduto;
+    }
+
+
+    public List<PrecoProduto> getPrecoProduto() {
+        return precoProduto;
+    }
+
+
+    public void setPrecoProduto(List<PrecoProduto> precoProduto) {
+        this.precoProduto = precoProduto;
+    }
+
+
 
 
     

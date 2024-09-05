@@ -1,51 +1,77 @@
 package com.agrotech.erp.entities;
 
 import java.util.Date;
+import java.util.List;
 
+import com.agrotech.erp.entities.Enums.TipoCusto;
+import com.agrotech.erp.entities.Enums.TipoInvestimento;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity(name="servico")
 public class Servico {
 
-    private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
-    private String descricao;
-    private String responsavel;
-    private String nomeTerceiro;
     private Date data;
-    private double valor;
-    private int quantidade;
-    private double total;
+
+    private String nome;
+
+    private String descricao;
+
+    private String responsavel;
+
+    private String nomeTerceiro;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipoInvestimento")
+    private TipoInvestimento tipoInvestimento;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipoCusto")
+    private TipoCusto tipoCusto; 
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "servico", fetch = FetchType.EAGER)    
+    private List<PrecoServico> precoServico;    
     
     public Servico() {
     }
 
-    public Servico(String nome, String descricao, String responsavel, String nomeTerceiro, Date data, double valor,
-            int quantidade, double total) {
+    public Servico(Date data, String nome, String descricao, String responsavel, String nomeTerceiro,
+            TipoInvestimento tipoInvestimento, TipoCusto tipoCusto, List<PrecoServico> precoServico) {
+        this.data = data;
         this.nome = nome;
         this.descricao = descricao;
         this.responsavel = responsavel;
         this.nomeTerceiro = nomeTerceiro;
-        this.data = data;
-        this.valor = valor;
-        this.quantidade = quantidade;
-        this.total = total;
-    }
-
-    public static long getSerialversionuid() {
-        return serialVersionUID;
+        this.tipoInvestimento = tipoInvestimento;
+        this.tipoCusto = tipoCusto;
+        this.precoServico = precoServico;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 
     public String getNome() {
@@ -80,69 +106,38 @@ public class Servico {
         this.nomeTerceiro = nomeTerceiro;
     }
 
-    public Date getData() {
-        return data;
+    public TipoInvestimento getTipoInvestimento() {
+        return tipoInvestimento;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setTipoInvestimento(TipoInvestimento tipoInvestimento) {
+        this.tipoInvestimento = tipoInvestimento;
     }
 
-    public double getValor() {
-        return valor;
+    public TipoCusto getTipoCusto() {
+        return tipoCusto;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    public void setTipoCusto(TipoCusto tipoCusto) {
+        this.tipoCusto = tipoCusto;
     }
 
-    public int getQuantidade() {
-        return quantidade;
+    public List<PrecoServico> getPrecoServico() {
+        return precoServico;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
+    public void setPrecoServico(List<PrecoServico> precoServico) {
+        this.precoServico = precoServico;
     }
 
     @Override
     public String toString() {
-        return "Servico [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", responsavel=" + responsavel
-                + ", nomeTerceiro=" + nomeTerceiro + ", data=" + data + ", valor=" + valor + ", quantidade="
-                + quantidade + ", total=" + total + "]";
+        return "Servico [id=" + id + ", data=" + data + ", nome=" + nome + ", descricao=" + descricao + ", responsavel="
+                + responsavel + ", nomeTerceiro=" + nomeTerceiro + ", tipoInvestimento=" + tipoInvestimento
+                + ", tipoCusto=" + tipoCusto + ", precoServico=" + precoServico + "]";
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-        return result;
-    }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Servico other = (Servico) obj;
-        if (nome == null) {
-            if (other.nome != null)
-                return false;
-        } else if (!nome.equals(other.nome))
-            return false;
-        return true;
-    }
 
     
 

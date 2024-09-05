@@ -13,7 +13,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "categoriaProduto")
+@Table(name = "CategoriaProduto")
 public class CategoriaProduto {
 
     /* Entidade para cadastro dos tipos de produtos como:
@@ -26,7 +26,7 @@ public class CategoriaProduto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="nome")
+    @Column(name="nome", unique = true )
     private String nome;
 
     @Column(name="descricao")
