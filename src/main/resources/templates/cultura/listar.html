@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:replace="~{/layout/header :: head('SGAG - Cultura')}"> </head>
+
+<body class="cultura">
+  <div class="sidebar" th:replace="~{/layout/navbar :: sidebar}"></div>
+
+  <div class="header">Lista de Culturas</div>
+
+  <nav class="navbar bg-body-tertiary">
+
+    <div class="container-fluid">
+      <a class="btn btn-primary" href="/cultura/cadastro" role="button">+ Novo</a>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Nome da Cultura" aria-label="Search" />
+        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+      </form>
+    </div>
+  </nav>
+
+  <div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>
+            <button type="button" class="btn btn-warning">Editar</button>
+            <button type="button" class="btn btn-danger">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+<footer th:replace="~{/layout/footer :: rodape}"></footer>
+
+</html>

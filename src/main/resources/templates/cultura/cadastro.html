@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:replace="~{/layout/header :: head('SGAG - Cadastro Cultura')}">
+</head>
+
+<body class="cultura">
+    <div class="sidebar" th:replace="~{/layout/navbar :: sidebar}"></div>
+
+    <div class="header">Cadastro da Cultura</div>
+
+
+    <div class="cadastro_cultura">
+        <form name="form" class="form" id="form" method="POST" action="/cultura/listar" autocomplete="on">
+            <div class="form_layout">
+                <div class="column_left">
+                    <label for="Nome"> Nome:</label>
+                    <input type="text" name="NomeCultura" id="NomeCultura" placeholder="Nome da Cultura" />
+                </div>
+            </div>
+
+            <div class="form_layout">
+                <div class="column_left">
+                    <label for="CicloVida">Ciclo de Vida:</label>
+                    <input type="number" name="CicloVida" id="CicloVida" placeholder="Ciclo de vida da Cultuta" />
+                </div>
+
+                <div class="column_rigth radio_layout">
+                    <input type="radio" class="input_radio" id="CicloVidaDia" name="CicloVida" value="Dias">
+                    <label for="Dias">Dia</label>
+
+                    <input type="radio" class="input_radio" id="CicloVidaSemana" name="CicloVida" value="Semana">
+                    <label for="Mes">Semana</label>
+
+                    <input type="radio" class="input_radio" id="CicloVidaMes" name="CicloVida" value="Mes">
+                    <label for="Mes">Mês</label>
+
+                    <input type="radio" class="input_radio" id="CicloVidaAno" name="CicloVida" value="Ano">
+                    <label for="Ano">Ano</label>
+                </div>
+            </div>
+
+            <div class="form_layout">
+                <div class="column_left">
+                    <label for="InicioProducao">Inicio da Produção:</label>
+                    <input type="number" name="InicioProducao" id="InicioProducao"
+                        placeholder="Tempo para o inicio da produção" />
+                </div>
+                <div class="column_rigth radio_layout">
+                    <input type="radio" class="input_radio" id="UnidadeInicioProducaoDia" name="UnidadeInicioProducao"
+                        value="Dias">
+                    <label for="Dias">Dia</label>
+
+                    <input type="radio" class="input_radio" id="UnidadeInicioProducaoSemana"
+                        name="UnidadeInicioProducao" value="Semana">
+                    <label for="Mes">Semana</label>
+
+                    <input type="radio" class="input_radio" id="UnidadeInicioProducaoMes" name="UnidadeInicioProducao"
+                        value="Mes">
+                    <label for="Mes">Mês</label>
+
+                    <input type="radio" class="input_radio" id="UnidadeInicioProducaoAno" name="UnidadeInicioProducao"
+                        value="Ano">
+                    <label for="Ano">Ano</label>
+                </div>
+            </div>
+
+            <div class="form_layout">
+                <div class="column_left">
+                    <label for="CicloProducao">Ciclo de Produção:</label>
+                    <input type="number" name="CicloProducao" id="CicloProducao"
+                        placeholder="Espaço de tempo de entre colheita" />
+                </div>
+                <div class="column_rigth radio_layout">
+                    <input type="radio" class="input_radio" id="UnidadeCicloProducaoDia" name="UnidadeCicloProducao"
+                        value="Dias">
+                    <label for="Dias">Dia</label>
+
+                    <input type="radio" class="input_radio" id="UnidadeCicloProducaoSemana" name="UnidadeCicloProducao"
+                        value="Semana">
+                    <label for="Mes">Semana</label>
+
+                    <input type="radio" class="input_radio" id="UnidadeCicloProducaoMes" name="UnidadeCicloProducao"
+                        value="Mes">
+                    <label for="Mes">Mês</label>
+
+                    <input type="radio" class="input_radio" id="UnidadeCicloProducaoAno" name="UnidadeCicloProducao"
+                        value="Ano">
+                    <label for="Ano">Ano</label>
+                </div>
+            </div>
+
+            <div class="form_layout">
+                <div class="column_left">
+                    <label for="QuantidadeSafra">Quantidade de Safras:</label>
+                    <input type="number" name="QuantidadeSafra" id="QuantidadeSafra"
+                        placeholder="Quantidade de safras" />
+                </div>
+            </div>
+
+
+            <div class="form_layout">
+                <div class="column_left">
+                    <label for="IntervaloEntreSafra">Tempo Entressafra:</label>
+                    <input type="number" name="IntervaloEntreSafra" id="IntervaloEntreSafra"
+                        placeholder="Intervalo entre safras" />
+                </div>
+                <div class="column_rigth radio_layout">
+                    <input type="radio" class="input_radio" id="UnidadeIntervaloEntreSafraDia"
+                        name="UnidadeIntervaloEntreSafra" value="Dias">
+                    <label for="Dias">Dias</label>
+
+                    <input type="radio" class="input_radio" id="UnidadeIntervaloEntreSafraSemana"
+                        name="UnidadeIntervaloEntreSafra" value="Semana">
+                    <label for="Mes">Semana</label>
+
+                    <input type="radio" class="input_radio" id="UnidadeIntervaloEntreSafraMes"
+                        name="UnidadeIntervaloEntreSafra" value="Mes">
+                    <label for="Mes">Mês</label>
+
+                    <input type="radio" class="input_radio" id="UnidadeIntervaloEntreSafraAno"
+                        name="UnidadeIntervaloEntreSafra" value="Ano">
+                    <label for="Ano">Ano</label>
+                </div>
+
+            </div>
+
+            <div class="form_layout">
+                <div class="column_left">
+                    <label for="IntervaloColheita">Intervalo de Colheita:</label>
+                    <input type="number" name="IntervaloColheita" id="IntervaloColheita"
+                        placeholder="Intervalo de colheitas" />
+                </div>
+                <div class="column_rigth radio_layout">
+
+                    <input type="radio" class="input_radio" id="UnidadeIntervaloColheitaDia"
+                        name="UnidadeIntervaloColheita" value="Dias">
+                    <label for="Dias">Dias</label>
+
+                    <input type="radio" class="input_radio" id="UnidadeIntervaloColheitaSemana"
+                        name="UnidadeIntervaloColheita" value="Semana">
+                    <label for="Mes">Semana</label>
+
+                    <input type="radio" class="input_radio" id="UnidadeIntervaloColheitaMes"
+                        name="UnidadeIntervaloColheita" value="Mes">
+                    <label for="Mes">Mês</label>
+
+                    <input type="radio" class="input_radio" id="UnidadeIntervaloColheitaAno"
+                        name="UnidadeIntervaloColheita" value="Ano">
+                    <label for="Ano">Ano</label>
+                </div>
+            </div>
+
+            <div class="form_layout">
+                <div class="column_left">
+                    <label for="EmbalagemVenda">Embalagem de Venda:</label>
+                    <input type="text" name="EmbalagemVenda" id="EmbalagemVenda" placeholder="Embalagem de venda" />
+                </div>
+            </div>
+            <div class="form_layout">
+                <div class="column_left">
+                    <label for="PesoVenda">Peso de Venda:</label>
+                    <input type="number" name="PesoVenda" id="PesoVenda" placeholder="Peso final do produto" />
+                </div>
+                <div class="column_rigth">
+                    <select name="UnidadePeso">
+                        <option value="Grama" selected>Grama</option>
+                        <option value="Quilo">Quilo</option>
+                        <option value="Mililitro">Mililitro</option>
+                        <option value="Litro">LitrosAno</option>
+                        <option value="N/A">N/A</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form_layout">
+                <div class="column_left layout_checkbox">
+                    <label for="SafraUnica">Safra única:</label>
+                    <input type="checkbox" name="SafraUnica" id="SafraUnica" />
+
+                </div>
+            </div>
+
+
+            <div class="button-style">
+                <button type="button" class="btn btn-success">Salvar</button>
+
+            </div>
+
+        </form>
+    </div>
+
+</body>
+<footer th:replace="~{/layout/footer :: rodape}"></footer>
+
+</html>

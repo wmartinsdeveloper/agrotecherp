@@ -3,27 +3,35 @@ package com.agrotech.erp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.agrotech.erp.dto.dtoCultura;
 import com.agrotech.erp.service.CulturaService;
 
 
-
-
-@RestController
+@Controller
 @RequestMapping("/cultura")
 public class CulturaController {
 
     @Autowired
     private CulturaService culturaService;
 
+    @GetMapping("/listar")
+    public String listar() {
+        return "/cultura/listar";
+    } 
+
+
+     @GetMapping("/cadastro")
+     public String cadastrar() {
+        return "/cultura/cadastro";
+     }
 
     @GetMapping("/buscar")
     public ResponseEntity<?> BuscaPorNome(@RequestParam("nome") String nome) {
@@ -41,10 +49,7 @@ public class CulturaController {
     }
     
 
-    @GetMapping("/listar")
-    public ResponseEntity<?> BuscaPorNome() {
-        return ResponseEntity.ok(culturaService.listar());
-    }    
+   
 
     @PostMapping("/salvar")
     public ResponseEntity Salvar(@RequestBody dtoCultura cultura) {
